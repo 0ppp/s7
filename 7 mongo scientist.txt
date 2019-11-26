@@ -1,0 +1,18 @@
+>mongo
+>show dbs
+>use scientist
+
+> db.createCollection('scien')
+
+db.scien.insert({fname:"abhi",lname:"nalave",BOD:new Date("1972-04-18"),DOD:"stillalive",field:["tcs","java","sql"],award:[{name:"codemaster",year:1976},{name:"robot",year:1998},{name:"puzzletalent",year:1995}]})
+
+db.scien.insert({fname:"mukesh",lname:"navse",BOD:new Date("1952-04-18"),DOD:"stillalive",field:["tcs","java","c","sql"],award:[{name:"turingmachine",year:1976},{name:"robotic",year:1998},{name:"code talent",year:1995}]})
+
+db.scien.insert({fname:"manisha",lname:"hipparkar",BOD:new Date("1942-04-18"),DOD:new Date("2009-08-06"),field:["tcs","java"],award:[{name:"topper",year:1976},{name:"puraskar",year:1998},{name:"puzzletalent",year:1995}]})
+
+a) > db.scien.find({ lname: { $regex: /n/ } })
+b) > db.scien.find({BOD:{"$gt":new Date("1950-03-11")},DOD:"still alive"})
+c)
+>db.scien.aggregate([{$group:{_id:{year:"$award.year",Name:"$award.name"}}}])
+d) > db.scien.find({"award.name":"turingmachine","award.year":{$lt:1980},field:{$size:4}})
+
